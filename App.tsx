@@ -44,7 +44,7 @@ const App: React.FC = () => {
       setTimeout(() => {
         const el = document.getElementById(id.replace('#', ''));
         if (el) {
-          const offset = window.innerWidth < 768 ? 80 : 120;
+          const offset = window.innerWidth < 768 ? 90 : 130;
           const bodyRect = document.body.getBoundingClientRect().top;
           const elementRect = el.getBoundingClientRect().top;
           const elementPosition = elementRect - bodyRect;
@@ -53,7 +53,7 @@ const App: React.FC = () => {
         }
       }, 100);
     } else if (element) {
-      const offset = window.innerWidth < 768 ? 80 : 120;
+      const offset = window.innerWidth < 768 ? 90 : 130;
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = element.getBoundingClientRect().top;
       const elementPosition = elementRect - bodyRect;
@@ -82,11 +82,11 @@ const App: React.FC = () => {
       </div>
 
       {/* Navigation */}
-      <nav className={`fixed top-0 w-full z-[100] transition-all duration-500 ${scrolled ? 'py-2 md:py-3' : 'py-4 md:py-8'}`}>
-        <div className={`container mx-auto max-w-7xl px-4 md:px-6`}>
+      <nav className={`fixed top-0 w-full z-[100] transition-all duration-500 ${scrolled ? 'py-2 md:py-3' : 'py-5 md:py-8'}`}>
+        <div className="container mx-auto max-w-7xl px-4 md:px-6">
           <div className={`flex justify-between items-center transition-all duration-500 rounded-2xl px-4 md:px-6 ${scrolled ? 'glass py-3 md:py-4 border border-white/5 shadow-2xl' : 'bg-transparent py-2'}`}>
             <button onClick={() => { setCurrentView('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="flex flex-col group text-left relative z-[101]">
-              <span className="text-base md:text-xl lg:text-2xl font-black font-heading tracking-tighter text-white group-hover:text-amber-500 transition-colors uppercase leading-none">
+              <span className="text-base sm:text-lg md:text-xl lg:text-2xl font-black font-heading tracking-tighter text-white group-hover:text-amber-500 transition-colors uppercase leading-none">
                 Act Like You Know
               </span>
               <span className="text-[7px] md:text-[9px] font-bold text-amber-500/80 tracking-[0.3em] md:tracking-[0.4em] uppercase ml-0.5 md:ml-1">Workshops</span>
@@ -136,9 +136,9 @@ const App: React.FC = () => {
             </button>
             
             <div className={`flex items-center gap-6 sm:gap-8 pt-8 md:pt-12 transition-all delay-500 ${isMenuOpen ? 'opacity-100' : 'opacity-0'}`}>
-               <a href="https://www.instagram.com/actlikeyouknowworkshops" className="text-zinc-500 hover:text-amber-500 transition-colors"><Instagram size={24} /></a>
-               <a href="https://www.facebook.com/Act-Like-You-Know-Workshops-1536648089981009" className="text-zinc-500 hover:text-amber-500 transition-colors"><Facebook size={24} /></a>
-               <a href="mailto:actlikeyouknowworkshops@gmail.com" className="text-zinc-500 hover:text-amber-500 transition-colors"><Mail size={24} /></a>
+               <a href="https://www.instagram.com/actlikeyouknowworkshops" className="text-zinc-500 hover:text-amber-500 transition-colors" aria-label="Instagram"><Instagram size={24} /></a>
+               <a href="https://www.facebook.com/Act-Like-You-Know-Workshops-1536648089981009" className="text-zinc-500 hover:text-amber-500 transition-colors" aria-label="Facebook"><Facebook size={24} /></a>
+               <a href="mailto:actlikeyouknowworkshops@gmail.com" className="text-zinc-500 hover:text-amber-500 transition-colors" aria-label="Email"><Mail size={24} /></a>
             </div>
           </div>
         </div>
@@ -233,13 +233,13 @@ const LandingPage: React.FC<{ scrollToId: (id: string) => void }> = ({ scrollToI
         <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/95 via-[#050505]/50 to-[#050505]"></div>
       </div>
 
-      <div className="container mx-auto px-6 relative z-10 pt-32 sm:pt-40 md:pt-48 pb-16 md:pb-24">
+      <div className="container mx-auto px-6 relative z-10 pt-40 sm:pt-48 md:pt-60 pb-16 md:pb-24">
         <div className="max-w-5xl space-y-6 md:space-y-10 animate-in fade-in slide-in-from-bottom duration-1000">
           <div className="inline-flex items-center gap-2 md:gap-3 bg-amber-500/10 border border-amber-500/20 px-3 md:px-4 py-1.5 rounded-full text-amber-500 text-[8px] md:text-[10px] font-black uppercase tracking-[0.25em] md:tracking-[0.3em]">
             <Award size={12} className="text-amber-500 md:w-3.5 md:h-3.5" />
             Industry Accredited Mentorship
           </div>
-          <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black font-heading leading-[0.9] tracking-ultra-tight text-white uppercase break-words">
+          <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black font-heading leading-[0.9] tracking-ultra-tight text-white uppercase break-words hyphens-auto">
             Act Like <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-200 to-white text-glow">You Know!</span>
           </h1>
@@ -321,7 +321,7 @@ const LandingPage: React.FC<{ scrollToId: (id: string) => void }> = ({ scrollToI
             <div className="relative aspect-[4/5] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden border-4 md:border-8 border-zinc-900 shadow-3xl">
               <img 
                 src="https://img1.wsimg.com/isteam/ip/dfdfe3df-804e-44eb-bb6a-a9ee12ee2bd1/TeachingPic1.jpg" 
-                alt="Dennis L.A. White" 
+                alt="Dennis L.A. White Teaching" 
                 className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-60"></div>
@@ -410,14 +410,15 @@ const LandingPage: React.FC<{ scrollToId: (id: string) => void }> = ({ scrollToI
             <div className="bg-[#0a0a0a] p-6 sm:p-8 md:p-12 rounded-3xl md:rounded-[2.5rem] border border-white/10 shadow-2xl">
               <form className="space-y-4 md:space-y-6" onSubmit={(e) => e.preventDefault()}>
                 <div className="space-y-1 md:space-y-2">
-                  <label className="text-[7px] md:text-[9px] font-black uppercase tracking-[0.3em] text-zinc-500 ml-3 md:ml-4 italic">Email Address</label>
+                  <label htmlFor="email-input" className="text-[7px] md:text-[9px] font-black uppercase tracking-[0.3em] text-zinc-500 ml-3 md:ml-4 italic">Email Address</label>
                   <input 
+                    id="email-input"
                     type="email" 
                     placeholder="actor@industry-pro.com" 
                     className="w-full px-5 md:px-8 py-4 md:py-5 bg-zinc-900 border border-white/5 rounded-xl md:rounded-2xl text-white focus:outline-none focus:ring-1 focus:ring-amber-500 transition-all text-xs sm:text-sm font-bold placeholder:text-zinc-700"
                   />
                 </div>
-                <button className="w-full py-4 md:py-5 bg-amber-500 hover:bg-amber-400 text-black rounded-xl md:rounded-2xl font-black uppercase tracking-[0.2em] text-[8px] md:text-[10px] transition-all shadow-xl shadow-amber-900/20 active:scale-95 flex items-center justify-center gap-3 md:gap-4">
+                <button type="submit" className="w-full py-4 md:py-5 bg-amber-500 hover:bg-amber-400 text-black rounded-xl md:rounded-2xl font-black uppercase tracking-[0.2em] text-[8px] md:text-[10px] transition-all shadow-xl shadow-amber-900/20 active:scale-95 flex items-center justify-center gap-3 md:gap-4">
                   Subscribe <ArrowUpRight size={16} />
                 </button>
                 <p className="text-[7px] md:text-[8px] text-center text-zinc-600 uppercase tracking-[0.2em] font-bold">Strictly professional updates. No spam.</p>
