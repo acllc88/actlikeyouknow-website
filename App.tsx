@@ -44,7 +44,7 @@ const App: React.FC = () => {
       setTimeout(() => {
         const el = document.getElementById(id.replace('#', ''));
         if (el) {
-          const offset = window.innerWidth < 768 ? 90 : 130;
+          const offset = window.innerWidth < 768 ? 80 : 120;
           const bodyRect = document.body.getBoundingClientRect().top;
           const elementRect = el.getBoundingClientRect().top;
           const elementPosition = elementRect - bodyRect;
@@ -53,7 +53,7 @@ const App: React.FC = () => {
         }
       }, 100);
     } else if (element) {
-      const offset = window.innerWidth < 768 ? 90 : 130;
+      const offset = window.innerWidth < 768 ? 80 : 120;
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = element.getBoundingClientRect().top;
       const elementPosition = elementRect - bodyRect;
@@ -82,7 +82,7 @@ const App: React.FC = () => {
       </div>
 
       {/* Navigation */}
-      <nav className={`fixed top-0 w-full z-[100] transition-all duration-500 ${scrolled ? 'py-2 md:py-3' : 'py-5 md:py-8'}`}>
+      <nav className={`fixed top-0 w-full z-[100] transition-all duration-500 ${scrolled ? 'py-2 md:py-3' : 'py-4 md:py-8'}`}>
         <div className="container mx-auto max-w-7xl px-4 md:px-6">
           <div className={`flex justify-between items-center transition-all duration-500 rounded-2xl px-4 md:px-6 ${scrolled ? 'glass py-3 md:py-4 border border-white/5 shadow-2xl' : 'bg-transparent py-2'}`}>
             <button onClick={() => { setCurrentView('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="flex flex-col group text-left relative z-[101]">
@@ -233,13 +233,14 @@ const LandingPage: React.FC<{ scrollToId: (id: string) => void }> = ({ scrollToI
         <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/95 via-[#050505]/50 to-[#050505]"></div>
       </div>
 
-      <div className="container mx-auto px-6 relative z-10 pt-40 sm:pt-48 md:pt-60 pb-16 md:pb-24">
+      {/* Optimized PT- for Navigation Clearance */}
+      <div className="container mx-auto px-6 relative z-10 pt-32 sm:pt-48 lg:pt-64 pb-16 md:pb-24">
         <div className="max-w-5xl space-y-6 md:space-y-10 animate-in fade-in slide-in-from-bottom duration-1000">
           <div className="inline-flex items-center gap-2 md:gap-3 bg-amber-500/10 border border-amber-500/20 px-3 md:px-4 py-1.5 rounded-full text-amber-500 text-[8px] md:text-[10px] font-black uppercase tracking-[0.25em] md:tracking-[0.3em]">
             <Award size={12} className="text-amber-500 md:w-3.5 md:h-3.5" />
             Industry Accredited Mentorship
           </div>
-          <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black font-heading leading-[0.9] tracking-ultra-tight text-white uppercase break-words hyphens-auto">
+          <h1 className="text-4xl sm:text-7xl md:text-8xl lg:text-9xl font-black font-heading leading-[0.9] tracking-ultra-tight text-white uppercase break-words hyphens-auto">
             Act Like <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-200 to-white text-glow">You Know!</span>
           </h1>
@@ -304,7 +305,7 @@ const LandingPage: React.FC<{ scrollToId: (id: string) => void }> = ({ scrollToI
            <h2 className="text-4xl sm:text-5xl md:text-8xl font-black font-heading uppercase text-white tracking-tighter leading-tight">Choose Your <span className="text-amber-500">Path</span></h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 xl:gap-12">
           {PROGRAMS.map((program) => (
             <ProgramCard key={program.id} program={program} />
           ))}
@@ -312,13 +313,15 @@ const LandingPage: React.FC<{ scrollToId: (id: string) => void }> = ({ scrollToI
       </div>
     </section>
 
-    {/* About Dennis L.A. White */}
+    {/* About Dennis L.A. White - Fixed Image size and side-by-side responsiveness */}
     <section id="about" className="py-16 sm:py-24 md:py-40 relative overflow-hidden bg-zinc-900/10 scroll-mt-20 md:scroll-mt-24">
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="grid lg:grid-cols-2 gap-12 sm:gap-16 md:gap-24 items-center">
-          <div className="relative group order-2 lg:order-1 max-w-lg mx-auto lg:max-w-none">
+          
+          {/* Order 1 on mobile: The Bio Image */}
+          <div className="relative group order-1 lg:order-1 w-full mx-auto">
             <div className="absolute -inset-4 bg-amber-500/20 rounded-[3rem] blur-[80px] opacity-20"></div>
-            <div className="relative aspect-[4/5] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden border-4 md:border-8 border-zinc-900 shadow-3xl">
+            <div className="relative w-full aspect-[4/5] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden border-4 md:border-8 border-zinc-900 shadow-3xl">
               <img 
                 src="https://img1.wsimg.com/isteam/ip/dfdfe3df-804e-44eb-bb6a-a9ee12ee2bd1/TeachingPic1.jpg" 
                 alt="Dennis L.A. White Teaching" 
@@ -326,15 +329,17 @@ const LandingPage: React.FC<{ scrollToId: (id: string) => void }> = ({ scrollToI
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-60"></div>
             </div>
-            <div className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 md:-bottom-10 md:-right-10 p-6 md:p-12 bg-amber-500 rounded-2xl md:rounded-3xl shadow-2xl text-black max-w-[140px] sm:max-w-[180px] md:max-w-xs border border-amber-400/50">
-              <div className="space-y-1">
+            {/* badge fix for tablet overlap */}
+            <div className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 md:-bottom-10 md:-right-10 p-5 md:p-12 bg-amber-500 rounded-2xl md:rounded-3xl shadow-2xl text-black max-w-[130px] sm:max-w-[180px] md:max-w-xs border border-amber-400/50">
+              <div className="space-y-0.5 md:space-y-1">
                 <p className="text-3xl sm:text-4xl md:text-6xl font-black font-heading uppercase tracking-tighter leading-none">20+</p>
                 <p className="text-[7px] md:text-[10px] font-black uppercase tracking-[0.2em] opacity-80 leading-tight">Years Industry Excellence</p>
               </div>
             </div>
           </div>
           
-          <div className="space-y-8 md:space-y-10 md:order-2">
+          {/* Order 2 on mobile: Text content */}
+          <div className="space-y-8 md:space-y-10 order-2 lg:order-2">
             <div className="space-y-3 md:space-y-4">
               <div className="text-amber-500 font-black uppercase tracking-[0.4em] text-[8px] md:text-[10px]">The Instructor</div>
               <h2 className="text-4xl sm:text-5xl md:text-8xl font-black font-heading uppercase leading-[0.9] tracking-tighter text-white">
@@ -365,7 +370,7 @@ const LandingPage: React.FC<{ scrollToId: (id: string) => void }> = ({ scrollToI
       </div>
     </section>
 
-    {/* Gallery Grid */}
+    {/* Gallery Grid - Improved mobile columns */}
     <section className="py-16 sm:py-24 md:py-32 bg-[#050505]">
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16 space-y-3 md:space-y-4">
@@ -373,7 +378,7 @@ const LandingPage: React.FC<{ scrollToId: (id: string) => void }> = ({ scrollToI
           <h2 className="text-3xl sm:text-4xl md:text-6xl font-black font-heading uppercase tracking-tight text-white">Our <span className="text-amber-500">Community</span></h2>
         </div>
         
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {[
             "Teachingpic3.jpg",
             "TeachingPic1.jpg",
